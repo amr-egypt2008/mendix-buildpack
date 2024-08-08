@@ -3,8 +3,8 @@
 #
 # Author: Mendix Digital Ecosystems, digitalecosystems@mendix.com
 # Version: 5.1.0
-ARG ROOTFS_IMAGE=mendix-rootfs:app
-ARG BUILDER_ROOTFS_IMAGE=mendix-rootfs:builder
+ARG ROOTFS_IMAGE=amorgomaa/mendix-projects:app-v1.0
+ARG BUILDER_ROOTFS_IMAGE=amorgomaa/mendix-projects:builder-v1.0
 
 # Build stage
 FROM ${BUILDER_ROOTFS_IMAGE} AS builder
