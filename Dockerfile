@@ -62,6 +62,9 @@ ENV PYTHONPATH "/opt/mendix/buildpack/lib/:/opt/mendix/buildpack/:/opt/mendix/bu
 # Copy start scripts
 COPY scripts/startup.py scripts/vcap_application.json /opt/mendix/build/
 
+# Ensure that Python 3 is installed in your Docker image
+RUN apt-get update && apt-get install -y python3
+
 # Create vcap home directory for Datadog configuration
 RUN mkdir -p /home/vcap /opt/datadog-agent/run &&\
     chown -R ${USER_UID}:0 /home/vcap /opt/datadog-agent/run &&\
