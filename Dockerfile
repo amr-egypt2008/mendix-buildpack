@@ -48,6 +48,14 @@ FROM ${ROOTFS_IMAGE}
 LABEL Author="Mendix Digital Ecosystems"
 LABEL maintainer="digitalecosystems@mendix.com"
 
+# ==============================
+# Install Python in the final image
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# =============================
 # Set the user ID
 ARG USER_UID=1001
 # Set the home path
