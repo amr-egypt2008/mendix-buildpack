@@ -23,7 +23,6 @@ ARG BUILDPACK_XTRACE
 # Copy project model/sources
 COPY $BUILD_PATH /opt/mendix/build
 
-
 # Use nginx supplied by the base OS
 ENV NGINX_CUSTOM_BIN_PATH=/usr/sbin/nginx
 
@@ -86,9 +85,6 @@ COPY --from=builder /opt/mendix /opt/mendix
 ENV NGINX_CUSTOM_BIN_PATH=/usr/sbin/nginx
 
 WORKDIR /opt/mendix/build
-
-
-
 
 # Set environment variables
 ENV ADMIN_PASSWORD=YourSecurePassword123! \
