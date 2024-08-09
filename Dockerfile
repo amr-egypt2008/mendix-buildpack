@@ -61,7 +61,15 @@ ENV PYTHONPATH "/opt/mendix/buildpack/lib/:/opt/mendix/buildpack/:/opt/mendix/bu
 
 # Copy start scripts
 COPY scripts/startup.py scripts/vcap_application.json /opt/mendix/build/
+# ===================================================================
+# Create the directory and set permissions
+RUN mkdir -p /root/.local/share/Mendix && \
+    chown -R ${USER_UID}:0 /root/.local/share/Mendix && \
+    chmod -R 755 /root/.local/share/Mendix
 
+RUN ls -l /root/.local/share && ls -l /root/.local/share/Mendix
+
+# =================================================
 # Create vcap home directory for Datadog configuration
 RUN mkdir -p /home/vcap /opt/datadog-agent/run &&\
     chown -R ${USER_UID}:0 /home/vcap /opt/datadog-agent/run &&\
